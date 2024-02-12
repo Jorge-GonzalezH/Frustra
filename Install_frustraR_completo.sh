@@ -1,7 +1,9 @@
 #!/bin/bash
 #FROM ubuntu:22.04
+#Customized version to install Frustratometer in my laptop, there may be differences between computers 
+#and it may not work, it is important to note the error if there is one so that it can be patched.  
+#script derived from discussion with the maintainer Freiberger Maria Ines PhD.
 
-#MAINTAINER Freiberger Maria Ines
 #For R installation
 
 apt-get update
@@ -29,6 +31,7 @@ apt-get install -y libavfilter-dev
 apt install libtesseract-dev libleptonica-dev
 apt-get install tesseract-ocr-eng
 
+# packages for run rustratometeR
 Rscript -e "update.packages(ask=FALSE, checkBuilt=TRUE)"
 Rscript -e "install.packages('usethis', dependencies = TRUE)"
 Rscript -e "install.packages('devtools', dependencies = TRUE)"
@@ -43,5 +46,6 @@ Rscript -e "install.packages('leiden', dependencies = TRUE)"
 Rscript -e "options(timeout=9999999)"
 Rscript -e "devtools::install_github('proteinphysiologylab/frustratometeR')"
 
+# MODELLER
 wget https://salilab.org/modeller/9.25/modeller_9.25-1_amd64.deb
 env KEY_MODELLER=MODELIRANJE dpkg -i modeller_9.25-1_amd64.deb
